@@ -68,6 +68,10 @@ module MPlayer
       pt_step value.abs, force
     end
     
+    def screenshot()
+      command("screenshot 0")
+    end
+    
     # goes to the previous entry in the playlist denoted by value.
     # No action will occur unless :force is specified
     def back(value,force = :no_force)

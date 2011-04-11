@@ -12,12 +12,12 @@ module MPlayer
     # set :path to point to the location of mplayer
     # defaults to '/usr/bin/mplayer'
     def initialize(file = "",options ={})
-      raise ArgumentError,"Invalid File" unless File.exists?(file)
+      #raise ArgumentError,"Invalid File" unless File.exists?(file)
       options[:path] ||= '/usr/bin/mplayer'
       @file = file
 
       mplayer_options = "-slave -quiet"
-      mplayer_options += " -vf screenshot" if options[:screenshot]
+      mplayer_options += " -vf screenshot,mirror"
 
       mplayer = "#{options[:path]} #{mplayer_options} #{@file}"
       @pid,@stdin,@stdout,@stderr = Open4.popen4(mplayer)
