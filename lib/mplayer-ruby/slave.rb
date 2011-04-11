@@ -17,7 +17,7 @@ module MPlayer
       @file = file
 
       mplayer_options = "-slave -quiet"
-      mplayer_options += " -vf screenshot,mirror"
+      mplayer_options += "-fs -vf screenshot,mirror"
 
       mplayer = "#{options[:path]} #{mplayer_options} #{@file}"
       @pid,@stdin,@stdout,@stderr = Open4.popen4(mplayer)
